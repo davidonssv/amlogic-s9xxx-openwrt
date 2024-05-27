@@ -318,8 +318,8 @@ jobs:
 #          curl -fsSL "${latest_url}" -o "${armvirt_tarfile_path}/${openwrt_filename}"
 #          [[ "${?}" -ne "0" ]] && echo "Invalid OpenWrt rootfs download address." && exit 1
 #
-          echo "build_tag=OpenWrt_${{ inputs.source_branch }}_${{ inputs.openwrt_storage }}_$(date +"%Y.%m")" >> ${GITHUB_OUTPUT}
-          df -hT ${PWD}
+#          echo "build_tag=OpenWrt_${{ inputs.source_branch }}_${{ inputs.openwrt_storage }}_$(date +"%Y.%m")" >> ${GITHUB_OUTPUT}
+#          df -hT ${PWD}
 #          echo "REPO_URL=${REPO_URL}" >> ${GITHUB_OUTPUT}
 #          echo "TAGS_NAME=${TAGS_NAME}" >> ${GITHUB_OUTPUT}
 #          echo "status=success" >> ${GITHUB_OUTPUT}
@@ -341,7 +341,8 @@ jobs:
         uses: ncipollo/release-action@main
         if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
         with:
-          tag: ${{ steps.down.outputs.build_tag }}
+          tag: stable
+#         tag: ${{ steps.down.outputs.build_tag }}
           artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
           allowUpdates: true
           removeArtifacts: false

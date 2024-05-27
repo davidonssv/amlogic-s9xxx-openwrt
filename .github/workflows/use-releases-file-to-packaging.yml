@@ -357,6 +357,6 @@ jobs:
             ### Install to EMMC
             - Login to OpenWrt → System → Amlogic Service → Install OpenWrt
             ### OpenWrt source code
-#           - [${{ steps.down.outputs.TAGS_NAME }}](${{ steps.down.outputs.REPO_URL }})
+
             ### OpenWrt Image Verification
             - sha256sum
